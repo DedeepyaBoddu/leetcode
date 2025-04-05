@@ -1,22 +1,16 @@
 class Solution:
     def canCompleteCircuit(self, gas: List[int], cost: List[int]) -> int:
-        start_index=-1
-
         if sum(gas) < sum(cost):
-            return start_index
+            return -1
         
-        diff = [g - c for g, c in zip(gas, cost)]
-
-        c = 0
+        cd = 0
         min_g = float("inf")
         start = 0
-        for i, d in enumerate(diff):
-            c += d
-            if c < min_g:
-                min_g = c
+        for i, (g, c) in enumerate(zip(gas, cost)):
+            cd += (g - c)
+            if cd < min_g:
+                min_g = cd
                 start = i
 
- 
-
         return (start + 1) % len(gas)
-            
+
