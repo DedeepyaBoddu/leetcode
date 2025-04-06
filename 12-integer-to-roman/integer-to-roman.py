@@ -15,9 +15,12 @@ class Solution:
         digit_list = [1000,900,500,400,100,90,50,40,10,9,5,4,1]
         
         for n in digit_list:
-            while num >= n:
-                result += num_map[n]
-                num -= n
+            quo = num // n
+            rem = num % n
+
+            result += num_map[n]*quo
+            num = rem
+           
         return result
 
 
