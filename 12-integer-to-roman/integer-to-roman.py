@@ -12,9 +12,8 @@ class Solution:
         }
         
         result = ''
-        digit_list = [1000,900,500,400,100,90,50,40,10,9,5,4,1]
-        
-        for n in digit_list:
+
+        for n in sorted(num_map.keys(), reverse=True):
             quo = num // n
             rem = num % n
 
