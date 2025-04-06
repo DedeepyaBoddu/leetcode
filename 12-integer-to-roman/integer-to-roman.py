@@ -15,10 +15,8 @@ class Solution:
 
         for n in sorted(num_map.keys(), reverse=True):
             quo = num // n
-            rem = num % n
-
             result += num_map[n]*quo
-            num = rem
+            num = num % n
            
         return result
 
