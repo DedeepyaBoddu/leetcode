@@ -4,14 +4,11 @@ class Solution:
 
         num = 0
         for i in range(0,len(s)):
-            if i == len(s)-1:
-                num += dict[s[i]]
-            elif dict[s[i]] >= dict[s[i+1]]:
+            if (i == len(s) -1) or dict[s[i]] >= dict[s[i+1]]:
                 num += dict[s[i]]
             else:
                 num -= dict[s[i]]
     
         return num
 
-
-        
+   
