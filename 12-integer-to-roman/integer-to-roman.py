@@ -10,7 +10,7 @@ class Solution:
             500: "D",  400: "CD",
             1000: "M", 900: "CM",
         }
-        
+ 
         result = ''
 
         for n in sorted(num_map.keys(), reverse=True):
@@ -19,8 +19,5 @@ class Solution:
             num = num % n
            
         return result
-
-
-
 
         
