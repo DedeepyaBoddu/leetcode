@@ -5,12 +5,10 @@ class Solution:
         for end in range(len(nums)):
             curr_sum += nums[end]
             while curr_sum >= target:
-                    minlen = min(minlen, end - start+1)
-                    curr_sum -= nums[start]
-                    start += 1
-
-        return 0 if minlen == float('inf') else minlen
-                
+                curr_sum -= nums[start]
+                minlen = min(minlen, end-start+1)
+                start += 1
+        return minlen if minlen < len(nums)+1 else 0
                 
 
 
