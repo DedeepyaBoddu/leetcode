@@ -5,7 +5,7 @@ class Solution:
 
         for r in range(len(s)):
             count[ord(s[r])-ord("A")]+=1
-            if len(s[l:r+1])-max(count)>k:
+            while len(s[l:r+1])-max(count)>k:
                 count[ord(s[l])-ord("A")]-=1
                 l+=1
 
