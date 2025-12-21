@@ -6,14 +6,10 @@
 
 class Solution:
     def hasCycle(self, head: Optional[ListNode]) -> bool:
-
-        if head==None:
-            return False
-
         set1 = set()
         tail = head
 
-        while tail.next!=None:
+        while tail:
             if tail in set1:
                 return True
             else:
