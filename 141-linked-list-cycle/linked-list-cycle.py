@@ -12,7 +12,6 @@ class Solution:
 
         set1 = set()
         tail = head
-        index=-1
 
         while tail.next!=None:
             if tail in set1:
