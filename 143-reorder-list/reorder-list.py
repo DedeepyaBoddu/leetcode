@@ -8,24 +8,20 @@ class Solution:
         """
         Do not return anything, modify head in-place instead.
         """
-        if not head or not head.next or not head.next.next:
-            return 
-            
         
         fast = slow = head
 
-        while fast.next and fast.next.next:
+        while fast and fast.next:
             fast = fast.next.next
             slow = slow.next
         
-        dummy= ListNode()
-        dummy.next = slow.next
+        second = slow.next
         slow.next = None
         #print("head",head)
         #print("next half", dummy.next)
 
         prev = None
-        curr = dummy.next
+        curr = second
         while curr:
             nxt = curr.next
             curr.next = prev
@@ -35,7 +31,7 @@ class Solution:
         #print("next half reversed", prev)
 
         p1 = head
-        p2 = prev
+        p2 = prev 
 
         while p1 and p2:
             n1 = p1.next
