@@ -9,8 +9,8 @@ class Solution:
 
         if head==None:
             return False
+
         set1 = set()
-        dummy = ListNode()
         tail = head
         index=-1
 
