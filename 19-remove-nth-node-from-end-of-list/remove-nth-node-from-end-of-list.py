@@ -19,12 +19,9 @@ class Solution:
     
         while curr:
             if i == idx:
-                if n!=1:
-                    tmp = curr.next.next
-                    curr.next.next = None
-                    curr.next = tmp
-                else:
-                    curr.next = None
+                tmp = curr.next.next
+                curr.next.next = None
+                curr.next = tmp
                 break
             else:
                 i +=1
