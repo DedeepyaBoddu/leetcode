@@ -9,13 +9,15 @@ class Solution:
     def lowestCommonAncestor(self, root: 'TreeNode', p: 'TreeNode', q: 'TreeNode') -> 'TreeNode':
         if not root:
             return None
-            
+
         lca = root
-        if (p.val <= root.val <= q.val) or (q.val <= root.val <= p.val):
-            return lca
-        elif p.val<= root.val:
-            return self.lowestCommonAncestor(root.left, p,q)
-        else:
-            return self.lowestCommonAncestor(root.right,p,q)
+        while lca:
+            if p.val < lca.val and q.val < lca.val:
+                lca = lca.left
+            elif p.val> lca.val and q.val>lca.val:
+                lca = lca.right
+            else:
+                return lca
+
 
         
