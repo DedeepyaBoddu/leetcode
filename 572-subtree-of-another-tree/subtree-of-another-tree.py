@@ -10,18 +10,11 @@ class Solution:
             return True
         elif not root:
             return False
-        q = deque([root])
-        while q:
-            for _ in range(len(q)):
-                node = q.popleft()
-                if self.isSameTree(node,subRoot):
-                    return True
-                else: 
-                    if node.left:
-                        q.append(node.left)
-                    if node.right:
-                        q.append(node.right)
-        return False
+        if self.isSameTree(root,subRoot):
+            return True
+
+        return (self.isSubtree(root.left,subRoot)) or (self.isSubtree(root.right,subRoot))
+
             
                 
     def isSameTree(self, p: Optional[TreeNode], q: Optional[TreeNode]) -> bool:
