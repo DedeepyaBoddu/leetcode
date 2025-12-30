@@ -6,15 +6,19 @@
 #         self.right = right
 class Solution:
     def kthSmallest(self, root: Optional[TreeNode], k: int) -> int:
-        list1 = []
+        self.k = k
+        self.ans = None
         def recursion(node: Optional[TreeNode]):
-            if not node:
+            if not node or self.ans is not None:
                 return
             recursion(node.left)
-            list1.append(node.val)
+            self.k-=1
+            if self.k ==0:
+                self.ans = node.val
+                return
             recursion(node.right)
         recursion(root)
-        return list1[k-1]
+        return self.ans
         
                 
 
