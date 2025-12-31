@@ -3,7 +3,7 @@ class Solution:
         result = []
         def dfs(i,cur,total):
             if total == target:
-                result.append(cur)
+                result.append(cur.copy())
                 return
             if total > target or i >= len(candidates):
                 return
