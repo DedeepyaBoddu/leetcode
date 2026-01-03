@@ -22,10 +22,10 @@ class WordDictionary:
             cur = root
             for i,char in enumerate(word):
                 if char == '.':
-                    res = False
                     for j in cur.children:
-                        res = res or dfs(cur.children[j], word[i+1:])
-                    return res
+                        if dfs(cur.children[j], word[i+1:]):
+                            return True
+                    return False
                 elif char in cur.children:
                     cur = cur.children[char]
                 else:
