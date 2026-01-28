@@ -6,10 +6,10 @@ class Solution:
             profit = 0
             if prices[b] <= prices[s]:
                 max_profit = max(max_profit, (prices[s] - prices[b]))
-                s +=1
             else:
                 b = s
-                s +=1
+            s +=1
+
         return max_profit
 
             
