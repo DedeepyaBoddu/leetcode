@@ -5,11 +5,11 @@ class Solution:
 
         for r in range(len(s)):
             hash_map[s[r]] +=1
-            while len(s[l:r+1]) - max(hash_map.values(), default=0) > k:
+            while (r-l+1) - max(hash_map.values(), default=0) > k:
                 hash_map[s[l]] -=1
                 l +=1
             
-            longest = max(longest,len(s[l:r+1]))
+            longest = max(longest,r-l+1)
 
         return longest
 
