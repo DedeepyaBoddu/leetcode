@@ -1,16 +1,19 @@
 class Solution:
     def isValid(self, s: str) -> bool:
-        stack = []
-        b_map = {"]":"[", "}":"{",")":"("}
+        stack = deque()
+        mapping = {')': '(', ']':'[', '}':'{'}
 
-        for char in s:
-            if char in b_map:
-                if stack and stack[-1]==b_map[char]:
-                    stack.pop()
+        for ch in s:
+            if ch in mapping:
+                if stack:
+                    if mapping[ch] == stack[-1]:
+                        stack.pop()
+                    else:
+                        return False
                 else:
-                     return False
+                    return False
             else:
-                stack.append(char)
+                stack.append(ch)
+                
         return True if not stack else False
-
-        
+            
