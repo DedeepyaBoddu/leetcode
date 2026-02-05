@@ -12,10 +12,10 @@ class Solution:
                 elif token == '*':
                     stack.append(x*y)
                 elif token == '/':
-                    stack.append(x/y)
+                    stack.append(int(x/y))
             else:
-                stack.append(token)
-        return int(stack.pop())
+                stack.append(int(token))
+        return stack[0]
                 
 
 
