@@ -5,12 +5,12 @@ class Solution:
 
         while l<=r:
             m = (l + r )//2
-            if target == nums[m]:
-                return m
+            if target > nums[m]:
+                l = m+1
             elif target < nums[m]:
                 r = m-1
             else:
-                l = m+1      
+                return m     
         return -1
 
 
