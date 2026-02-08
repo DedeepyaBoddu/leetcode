@@ -7,14 +7,14 @@ class Solution:
                 return m
                 #right sorted portion
             elif nums[m] <= nums[r]:
-                if target <= nums[r] and target >= nums[m]:
+                if nums[m] <= target <= nums[r]:
                     l = m+1
                 else:
                     r = m-1
 
             #left sorted portion
             elif nums[m] >= nums[l]:
-                if target >= nums[l] and target <= nums[m]:
+                if nums[l] <= target <= nums[m]:
                     r = m-1
                 else:
                     l= m +1
