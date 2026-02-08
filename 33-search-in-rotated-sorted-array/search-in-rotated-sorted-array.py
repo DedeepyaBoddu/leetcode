@@ -7,17 +7,17 @@ class Solution:
                 return m
                 #right sorted portion
             elif nums[m] <= nums[r]:
-                if target > nums[r] or target < nums[m]:
-                    r =m-1
-                else:
+                if target <= nums[r] and target >= nums[m]:
                     l = m+1
+                else:
+                    r = m-1
 
             #left sorted portion
             elif nums[m] >= nums[l]:
-                if target < nums[l] or target > nums[m]:
-                    l = m+1
+                if target >= nums[l] and target <= nums[m]:
+                    r = m-1
                 else:
-                    r= m -1
+                    l= m +1
                                 
         return -1
 
