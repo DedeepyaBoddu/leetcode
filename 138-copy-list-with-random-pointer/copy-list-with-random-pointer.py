@@ -20,7 +20,6 @@ class Solution:
                 hmap[node] = temp
                 temp.next = DuplicateNode(node.next)
                 temp.random = DuplicateNode(node.random)
-                hmap[node] = temp
             return temp
 
         hmap = {}
