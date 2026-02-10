@@ -14,21 +14,19 @@ class Solution:
             ptr = ptr.next
         
         idx = count - n
-        i = 1
+        i = 0
+        curr = dummy
 
-        if idx == 0:
-            dummy.next = head.next
-            return dummy.next
-
-        ptr2 = dummy.next
-        while i<idx:
-            i +=1
-            ptr2 = ptr2.next
-        
-        rem = ptr2.next.next
-        ptr2.next.next = None
-        ptr2.next = rem
-
+        while curr:
+            if i == idx:
+                rem = curr.next.next
+                curr.next.next = None
+                curr.next = rem
+                break
+            else:
+                i +=1
+                curr = curr.next
+      
         return dummy.next
 
 
