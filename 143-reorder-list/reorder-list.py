@@ -8,38 +8,39 @@ class Solution:
         """
         Do not return anything, modify head in-place instead.
         """
+        if not head or not head.next or not head.next.next:
+            return
+        slow = head
+        fast = head
         
-        fast = slow = head
-
-        while fast and fast.next:
+        while fast.next and fast.next.next:
             fast = fast.next.next
             slow = slow.next
         
-        second = slow.next
-        slow.next = None
-        #print("head",head)
-        #print("next half", dummy.next)
+        curr = slow.next
+        slow.next= None
+    
+        prev= None
 
-        prev = None
-        curr = second
         while curr:
             nxt = curr.next
             curr.next = prev
             prev = curr
             curr = nxt
-        #print("head",head)
-        #print("next half reversed", prev)
-
-        p1 = head
-        p2 = prev 
-
-        while p1 and p2:
-            n1 = p1.next
-            n2 = p2.next
-
-            p1.next = p2
-            p2.next = n1
-            p1 = n1
-            p2 = n2
         
-        return 
+        l1 = head       
+        l2 = prev
+
+        while l1 and l2:
+            n1 = l1.next
+            n2 = l2.next
+
+            l1.next = l2
+            l2.next = n1
+
+            l1 = n1
+            l2 = n2        
+        return
+
+
+        
