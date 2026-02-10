@@ -12,7 +12,7 @@ class Solution:
 
         def DuplicateNode(node):
             if not node:
-                return
+                return None
             if node in hmap:
                 return hmap[node]
             else:
