@@ -35,7 +35,6 @@ class Solution:
             copy = curr.next
             curr_copy.next = copy
             curr.next = copy.next
-            copy.next = None
             curr_copy = copy
             curr = curr.next
         
