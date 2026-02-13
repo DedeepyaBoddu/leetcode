@@ -7,13 +7,11 @@
 class Solution:
     def invertTree(self, root: Optional[TreeNode]) -> Optional[TreeNode]:
         if not root:
-            return None
-        l = root.right
-        r = root.left
-        root.left = l
-        root.right = r
-
-        self.invertTree(l)
-        self.invertTree(r)
+            return
+        l = root.left
+        r = root.right
+        root.left = self.invertTree(r)
+        root.right = self.invertTree(l)
         return root
-        
+
+
