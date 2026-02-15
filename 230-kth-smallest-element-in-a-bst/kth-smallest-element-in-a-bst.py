@@ -9,7 +9,7 @@ class Solution:
         self.k = k
         self.ans = None
         def dfs(node):
-            if not node:
+            if not node or self.ans is not None:
                 return
             dfs(node.left)
             self.k -=1
