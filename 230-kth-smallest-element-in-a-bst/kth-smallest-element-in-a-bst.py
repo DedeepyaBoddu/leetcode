@@ -10,13 +10,16 @@ class Solution:
         curr = root
         stack = []
         while curr or stack:
+            #recursively go to left
             while curr:
                 stack.append(curr)
                 curr = curr.left
+            #process node
             curr = stack.pop()
             n +=1
             if n == k:
                 return curr.val
+            #right
             curr = curr.right
             
 
