@@ -3,7 +3,7 @@ class Solution:
         k = len(nums) - k
 
         def quickSelect(l, r):
-            pivot = nums[random.randint(l, r)]
+            pivot = nums[l]
 
             # 3-way partition
             lt = l          # nums[l:lt] < pivot
