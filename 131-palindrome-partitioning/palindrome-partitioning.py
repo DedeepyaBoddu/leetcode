@@ -14,10 +14,10 @@ class Solution:
         def dfs(i):
             if i >= len(s):
                 res.append(sublist.copy())           
-            for j in range(len(s)-i):
-                if ispalindrome(s[i:i+j+1]):
-                    sublist.append(s[i:i+j+1])
-                    dfs(i+j+1)
+            for j in range(i,len(s)):
+                if ispalindrome(s[i:j+1]):
+                    sublist.append(s[i:j+1])
+                    dfs(j+1)
                     sublist.pop()
 
         dfs(0)
