@@ -3,39 +3,39 @@ class TrieNode:
         self.children = {}
         self.IsEnd = False
 
+
 class WordDictionary:
 
     def __init__(self):
         self.root = TrieNode()
+        
 
     def addWord(self, word: str) -> None:
-        cur = self.root
+        curr = self.root
         for char in word:
-            if char not in cur.children:
-                cur.children[char]=TrieNode()
-            cur = cur.children[char]
-        cur.IsEnd = True
+            if char not in curr.children:
+                curr.children[char] = TrieNode()            
+            curr = curr.children[char]
+        curr.IsEnd = True
+
         
 
     def search(self, word: str) -> bool:
-        def dfs(root,word):
-            cur = root
+        def dfs(root, word):
+            curr = root
             for i,char in enumerate(word):
-                if char == '.':
-                    for j in cur.children:
-                        if dfs(cur.children[j], word[i+1:]):
+                if char == ".":
+                    for child in curr.children.values():
+                        if dfs(child,word[i+1:]):
                             return True
+                    return False                       
+                if char not in curr.children:
                     return False
-                elif char in cur.children:
-                    cur = cur.children[char]
-                else:
-                    return False
-            return cur.IsEnd
+                curr = curr.children[char]
+            return curr.IsEnd
         return dfs(self.root,word)
-                        
-
                 
-                    
+                
 
         
 
