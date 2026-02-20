@@ -1,7 +1,7 @@
 class Solution:
     def partition(self, s: str) -> List[List[str]]:
         res = []
-
+        sublist = []
         def ispalindrome(s):
             l,r = 0, len(s)-1
             while l<r:
@@ -11,14 +11,16 @@ class Solution:
                 r -=1
             return True
 
-        def dfs(rem_str,sublist):
-            if not rem_str:
+        def dfs(i):
+            if i >= len(s):
                 res.append(sublist.copy())           
-            for i in range(len(rem_str)):
-                if ispalindrome(rem_str[:i+1]):
-                    dfs(rem_str[i+1:],sublist+ [rem_str[:i+1]])
+            for j in range(len(s)-i):
+                if ispalindrome(s[i:i+j+1]):
+                    sublist.append(s[i:i+j+1])
+                    dfs(i+j+1)
+                    sublist.pop()
 
-        dfs(s, [])
+        dfs(0)
         return res
             
 
