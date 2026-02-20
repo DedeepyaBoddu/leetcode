@@ -12,10 +12,8 @@ class Solution:
             return True
 
         def dfs(rem_str,sublist):
-            #substr = s[:i+1]
             if not rem_str:
-                res.append(sublist.copy())
-            
+                res.append(sublist.copy())           
             for i in range(len(rem_str)):
                 if ispalindrome(rem_str[:i+1]):
                     dfs(rem_str[i+1:],sublist+ [rem_str[:i+1]])
