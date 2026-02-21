@@ -8,21 +8,21 @@ class Node:
 
 from typing import Optional
 class Solution:
-
     def cloneGraph(self, node: Optional['Node']) -> Optional['Node']:
-        visited = dict()
-        def dfs(n):
-            if not n:
-                return None
-                
-            if n not in visited:  
-                clone = Node(n.val) 
-                visited[n] = clone
-                for nei in n.neighbors:
-                    clone.neighbors.append(dfs(nei))
-            return visited[n]
-        return dfs(node)
+        hmap = {}
 
+        def dfs(i):
+            if not i:
+                return None
+            if i in hmap:
+                return hmap[i]
+            clone = Node(i.val)
+            hmap[i] = clone
+            clone.neighbors = [dfs(neighbor) for neighbor in i.neighbors]
+            return clone
+        return dfs(node)
+        
+        
 
 
 
