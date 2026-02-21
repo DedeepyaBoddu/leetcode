@@ -14,12 +14,11 @@ class Solution:
         def dfs(i):
             if not i:
                 return None
-            if i in hmap:
-                return hmap[i]
-            clone = Node(i.val)
-            hmap[i] = clone
-            clone.neighbors = [dfs(neighbor) for neighbor in i.neighbors]
-            return clone
+            if i not in hmap:
+                clone = Node(i.val)
+                hmap[i] = clone
+                clone.neighbors = [dfs(neighbor) for neighbor in i.neighbors]
+            return hmap[i]
         return dfs(node)
         
         
