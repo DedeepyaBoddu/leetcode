@@ -3,33 +3,21 @@ class Solution:
         atl = set()
         pac = set()
 
-        def pacific(i,j, prev_height):
-            if i < 0 or j < 0 or i >= len(heights) or j >= len(heights[0]) or (i,j) in pac or heights[i][j] < prev_height:
+        def flow(i,j, visited,prev_height):
+            if i < 0 or j < 0 or i >= len(heights) or j >= len(heights[0]) or (i,j) in visited or heights[i][j] < prev_height:
                 return
-            if i == 0 or j == 0:
-                pac.add((i,j))
             elif heights[i][j] >= prev_height:
-                pac.add((i,j))
+                visited.add((i,j))
             for x,y in [(i-1,j),(i+1,j),(i,j-1),(i,j+1)]:
-                pacific(x,y,heights[i][j])
-
-        def atlantic(i,j, prev_height):
-            if i < 0 or j < 0 or i >= len(heights) or j >= len(heights[0]) or (i,j) in atl or heights[i][j] < prev_height:
-                return
-            if i == len(heights)-1 or j == len(heights[0])-1:
-                atl.add((i,j))
-            elif heights[i][j] >= prev_height:
-                atl.add((i,j))
-            for x,y in [(i-1,j),(i+1,j),(i,j-1),(i,j+1)]:
-                atlantic(x,y,heights[i][j])
+                flow(x,y,visited,heights[i][j])
 
         for i in range(len(heights[0])):
-            pacific(0,i,0)
-            atlantic(len(heights)-1,i,0)
+            flow(0,i,pac,0)
+            flow(len(heights)-1,i,atl,0)
 
         for j in range(len(heights)):
-            pacific(j,0,0)
-            atlantic(j,len(heights[0])-1,0)
+            flow(j,0,pac,0)
+            flow(j,len(heights[0])-1,atl,0)
 
 
         result = []
