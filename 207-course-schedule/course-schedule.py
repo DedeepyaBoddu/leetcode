@@ -15,7 +15,7 @@ class Solution:
             for pre in premap[crs]:
                 if not dfs(pre):
                     return False
-            visited.remove(crs)
+            #visited.remove(crs)
             premap[crs] = []
             return True
 
