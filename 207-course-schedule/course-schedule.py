@@ -6,16 +6,18 @@ class Solution:
             premap[i].append(j)
 
         def dfs(crs):
-            if premap[crs] == []:
-                return True
+            #recusion stack tracking
             if crs in visited:
                 return False
+            #memoization
+            if premap[crs] == []:
+                return True
             visited.add(crs)
 
             for pre in premap[crs]:
                 if not dfs(pre):
                     return False
-            #visited.remove(crs)
+            visited.remove(crs)
             premap[crs] = []
             return True
 
