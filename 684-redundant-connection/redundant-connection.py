@@ -1,0 +1,20 @@
+class Solution:
+    def findRedundantConnection(self, edges: List[List[int]]) -> List[int]:
+        parent = [i for i in range(0,len(edges))]
+
+        def find(n):
+            if parent[n]!=n:
+                parent[n] = find(parent[n])
+            return parent[n]
+
+        def union(n1,n2):
+            p1,p2 = find(n1), find(n2)
+            if p1 == p2:
+                return False
+            parent[p2] = p1
+            return True
+        
+        for n1,n2 in edges:
+            if not union(n1-1,n2-1):
+                return [n1,n2]
+        
