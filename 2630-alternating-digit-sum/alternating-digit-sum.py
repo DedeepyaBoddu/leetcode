@@ -1,20 +1,16 @@
 class Solution:
     def alternateDigitSum(self, n: int) -> int:
-        stack = []
-        while n != 0:
-            stack.append(n%10)
-            n = n//10
-
-        factor = 1
-        ans =0
-        print(stack)
-        while stack:
-            k = stack.pop()
-            ans += k*factor
-            factor = factor*(-1)
-        
+        string = str(n)
+        ans = 0
+        for i,digit in enumerate(string):
+            if i%2 ==0:
+                ans += int(digit)
+            else:
+                ans -= int(digit)
         return ans
 
+
+        
 
             
 
