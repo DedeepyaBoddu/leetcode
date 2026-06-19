@@ -1,10 +1,14 @@
 class Solution:
     def rob(self, nums: List[int]) -> int:
-        one = two = 0
-        for i in range(0,len(nums)):
-            nums[i] = max(two, nums[i]+one)
-            one = two
-            two = nums[i]
-        return nums[-1]
+        memo = [-1]*len(nums)
+        def dfs(i):
+            if i < 0:
+                return 0
+            if memo[i]== -1:
+                memo[i] = max(nums[i]+dfs(i-2), dfs(i-1))
+            return memo[i]
+        
+        return dfs(len(nums)-1)
 
+        
         
