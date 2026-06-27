@@ -3,8 +3,8 @@ class Solution:
         max_sum = -float("inf")
         curr_sum = 0
         ## Using DP - dp[i] is max sum ending at index i
-        for i in range(0,len(nums)):
-            curr_sum = max(curr_sum+nums[i], nums[i])
+        for num in nums:
+            curr_sum = max(curr_sum+num, num)
             max_sum = max(max_sum, curr_sum)
         return max_sum
 
