@@ -1,9 +1,16 @@
 class Solution:
     def canJump(self, nums: List[int]) -> bool:
+        n = len(nums)
+        dp = [False]*n
+        dp[n-1] = True
 
-        idx_to_reach=len(nums)-1
-        for i in range(len(nums)-1,-1,-1):
-            if idx_to_reach - i <= nums[i]:
-                idx_to_reach=i
-        return idx_to_reach == 0
+        for i in range(len(nums)-2, -1, -1):
+            for jump in range(1, min(nums[i],n-1-i)+1):
+                if dp[i + jump]:
+                    dp[i] = True
+                    break
+            
+        return dp[0]
+
+            
 
