@@ -8,6 +8,8 @@ class Solution:
         for num in nums:
             temp = dp.copy()
             for i in dp:
+                if i == target:
+                    return True
                 temp.add(i+num)
                 temp.add(i)
             dp = temp
