@@ -15,7 +15,7 @@ class Solution:
                 return False
             if left_min < 0:
                 left_min = 0
-        return left_min <= 0 <= left_max
+        return left_min == 0
 
             
         
