@@ -1,15 +1,16 @@
 class Solution:
     def mergeTriplets(self, triplets: List[List[int]], target: List[int]) -> bool:
-        good = set()
-        for i in range(len(triplets)):
-            if triplets[i][0] > target[0] or triplets[i][1] > target[1] or triplets[i][2] > target[2]:
-                continue
-            
-            for idx in range(0,3):
-                if idx not in good:
-                    if target[idx] == triplets[i][idx]:
-                        good.add(idx)
-        return len(good) == 3
+        res0 = res1 = res2 = False
+
+        for x, y, z in triplets:
+            if x <= target[0] and y <= target[1] and z <= target[2]:
+                if not res0 and x == target[0]:
+                    res0 = True
+                if not res1 and y == target[1]:
+                    res1 = True
+                if not res2 and z == target[2]:
+                    res2 = True
+        return res0 and res1 and res2
                     
 
         
