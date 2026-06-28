@@ -9,6 +9,7 @@ class Solution:
         while min_heap:
             first = min_heap[0]
             for card in range(first, first+groupSize):
+                # here checking if key isnt present in dict is enough because if key has value and its becoming zero, we are handling it down after decrementing counter, any count reaches zero. if its min of heap, pop it. if its not min, it automatically means consecutivity is missing, so we return False. so our code will never even go into situation where you start a group with a card and one of the following cards will have a counter 0
                 if card not in count:
                     return False
                 count[card] -=1
