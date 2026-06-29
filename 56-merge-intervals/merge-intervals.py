@@ -8,7 +8,7 @@ class Solution:
                 res.append(prev)
                 prev = intervals[i]
             else:
-                prev = [min(prev[0],intervals[i][0]), max(prev[1], intervals[i][1])]
+                prev[1] = max(prev[1], intervals[i][1])
         res.append(prev)
         return res
         
