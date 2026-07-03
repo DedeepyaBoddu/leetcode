@@ -3,10 +3,6 @@ class Solution:
         m = len(text1)
         n = len(text2) 
         dp = [[0]*(n+1) for _ in range(m+1)]
-        for c in range(n):
-            dp[m][c] == 0
-        for r in range(m):
-            dp[r][n] == 0
 
         for i in range(len(text1)-1,-1,-1):
             for j in range(len(text2)-1,-1,-1):
