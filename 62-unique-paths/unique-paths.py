@@ -4,6 +4,7 @@ class Solution:
 
         def dfs(i,j):
             if i == 0 or j == 0:
+                dp[i][j] =1
                 return 1
             if dp[i][j]!=0:
                 return dp[i][j]
