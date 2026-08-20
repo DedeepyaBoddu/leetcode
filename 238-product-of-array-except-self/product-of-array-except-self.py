@@ -3,12 +3,18 @@ class Solution:
         n = len(nums)
         prefix = [1]*n
         suffix = [1]*n
-
         for i in range(1,n):
-            prefix[i] = prefix[i-1]*nums[i-1]
-            suffix[-i-1] = suffix[-i]*nums[-i]
+            prefix[i] *= prefix[i-1]*nums[i-1]
+            suffix[n-1-i] *= suffix[n-i]*nums[n-i]
         
-        for i in range(0,n):
-            prefix[i] = prefix[i]*suffix[i]
+        answer = prefix
+        for i in range(n):
+            answer[i] *= suffix[i]
         
-        return prefix
+        return answer
+            
+            
+        
+            
+
+            
