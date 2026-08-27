@@ -3,14 +3,14 @@ class Solution:
         l = 0
         r = len(numbers)-1
 
-        curr_sum = numbers[l]+numbers[r]
-        while curr_sum != target:
+        while l<r :
+            curr_sum = numbers[l]+numbers[r]
             if target > curr_sum:
                 l +=1
-            if target < curr_sum:
+            elif target < curr_sum:
                 r -=1
-            curr_sum = numbers[l] + numbers[r]
-        return [l+1,r+1]
+            else:
+                return [l+1,r+1]
             
                 
             
