@@ -1,29 +1,20 @@
 class Solution:
     def checkInclusion(self, s1: str, s2: str) -> bool:
-        if not s1:
-            return True
-        s1_dict = defaultdict(int)
-        for ch in s1:
-            s1_dict[ch] +=1
-        win_dict = defaultdict(int)
+        counter = Counter(s1)
 
-        l=0
+        l = 0
+        window = defaultdict(int)
         for r in range(len(s2)):
-            win_dict[s2[r]] +=1
+            window[s2[r]] +=1
 
             if r-l+1 > len(s1):
-                win_dict[s2[l]] -=1
-                if win_dict[s2[l]]==0:
-                    del win_dict[s2[l]]
+                window[s2[l]] -=1
+                if window[s2[l]] == 0 :
+                    del window[s2[l]]
                 l +=1
-            
-            if win_dict == s1_dict:
+
+            if window == counter:
                 return True
         return False
 
-            
-            
-            
-            
-        
         
